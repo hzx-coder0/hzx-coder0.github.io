@@ -254,13 +254,20 @@
   }
 
   .author__copy-email {
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
+    gap: 0.25em;
+    white-space: nowrap;
   }
 
   .author__copy-status {
     color: $gray;
     font-size: $type-size-7;
-    margin-left: 0.25em;
+  }
+
+  .author__email-text {
+    font-size: $type-size-6;
   }
 }
 
