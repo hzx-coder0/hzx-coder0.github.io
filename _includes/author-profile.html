@@ -29,10 +29,9 @@
         <li><a href="{{ author.uri }}"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
       {% endif %}
       {% if author.email %}
-        <li>
+        <li class="author__email-item">
           <a href="#" class="author__copy-email" data-copy-email="{{ author.email }}" aria-label="Copy email address">
-            <i class="fas fa-fw fa-envelope" aria-hidden="true"></i>
-            <span class="author__email-text">{{ author.email }}</span>
+            <i class="fas fa-fw fa-envelope" aria-hidden="true"></i><span class="author__email-text">&nbsp;{{ author.email }}</span>
             <span class="author__copy-status" aria-live="polite"></span>
           </a>
         </li>

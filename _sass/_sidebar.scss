@@ -238,6 +238,11 @@
     overflow-wrap: anywhere;
   }
 
+  .author__email-item {
+    overflow-wrap: normal;
+    white-space: nowrap;
+  }
+
   a {
     display: block;
     margin-bottom: 5px;
@@ -253,12 +258,14 @@
     }
   }
 
-  .author__copy-email {
-    display: inline-flex;
+  a.author__copy-email {
+    display: inline-flex !important;
     align-items: center;
+    flex-wrap: nowrap;
     cursor: pointer;
-    gap: 0.25em;
-    white-space: nowrap;
+    gap: 0;
+    line-height: 1.25;
+    white-space: nowrap !important;
   }
 
   .author__copy-status {
@@ -267,7 +274,9 @@
   }
 
   .author__email-text {
+    display: inline-block;
     font-size: $type-size-6;
+    white-space: nowrap;
   }
 }
 
