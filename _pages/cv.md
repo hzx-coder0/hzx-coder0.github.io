@@ -11,54 +11,62 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* M.S. in Communication Engineering, University of Science and Technology of China, 2026 onward
+  * Admitted through graduate recommendation.
+* B.S. in Artificial Intelligence, University of Science and Technology of China, 2022-2026
+  * GPA: 3.74/4.30, rank 7/57
+  * CET-6: 524, CET-4: 554
 
-Work experience
+Research Experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* 2025: Accelerating Data Generation for Nonlinear Temporal PDEs via Homologous Perturbation in Solution Space
+  * Studied efficient generation of large-scale solution datasets for nonlinear time-dependent PDEs.
+  * Manuscript in preparation for AAAI 2027.
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* 2026: Pretraining and Fine-tuning for Neural Operators
+  * Explored large-scale pretraining and LoRA-style adaptation for neural operators.
+  * Designed fine-tuning strategies and ran preliminary validation on DPOT.
+  * Manuscript in preparation for NeurIPS 2026.
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
+Projects
+======
+* 2025: Personalized Mobile Agent
+  * Built an LLM-based mobile agent using CoT, ReAct, ADB screenshots, and XML parsing.
+
+* 2024-2025: Emotion-driven Virtual Human Assistant
+  * Connected LLM-based text analysis, emotion vectors, video generation controls, and talking-head synthesis.
+  * Undergraduate innovation project grade: A.
+
+* 2024: Personal Shopping AI Assistant Based on LLMs
+  * Built an external product database and system prompts for fuzzy recommendation and structured extraction.
+  * Received awards in AIGC Innovation Competition and Xinghuo Cup.
+
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Programming: Python, C
+* Tools: LaTeX, Markdown, Git
+* AI engineering: prompt engineering, LLM agents, vibe coding
 
-Publications
+Honors and Awards
+======
+* 2025: National Encouragement Scholarship
+* 2025: PetroChina Scholarship
+* 2024: Institute of Microelectronics Scholarship
+* 2024: AIGC Innovation Competition, National Excellence Award
+* 2024: Xinghuo Cup LLM Innovation Competition, Excellence Award
+* 2023: Provincial Third Prize, Chinese College Student Mathematics Competition
+* 2023: Yang Yongman Scholarship
+* 2022, 2023, 2024: Tang Zhongying Moral Education Scholarship
+* 2022: Freshman Scholarship, Bronze Award
+
+Service and Leadership
+======
+* 2026: Member, Party Branch Committee, School of Information Science and Technology
+* Class study committee member
+* 2022-2023: Member, Academic Department, USTC Student Union
+
+Publications and Manuscripts
 ======
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
