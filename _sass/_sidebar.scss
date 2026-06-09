@@ -234,7 +234,8 @@
   }
 
   li {
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   a {
@@ -250,6 +251,16 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  .author__copy-email {
+    cursor: pointer;
+  }
+
+  .author__copy-status {
+    color: $gray;
+    font-size: $type-size-7;
+    margin-left: 0.25em;
   }
 }
 
