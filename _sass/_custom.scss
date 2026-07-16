@@ -307,8 +307,7 @@ a:visited {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.02);
-  transition: filter 0.5s ease, transform 0.55s ease;
+  transition: transform 0.55s ease;
 }
 
 .hero-avatar:hover {
@@ -317,12 +316,12 @@ a:visited {
 }
 
 .hero-avatar:hover img {
-  filter: grayscale(0) contrast(1);
   transform: scale(1.06);
 }
 
 /* Editorial content */
-.page__content {
+#main .page__content {
+  float: none;
   max-width: var(--maxw);
   margin: 0 auto;
   padding: clamp(2.4rem, 5vw, 3.6rem) clamp(1.2rem, 4vw, 2rem) 1rem;
@@ -689,7 +688,6 @@ a:visited {
   }
 
   .hero-avatar:hover img {
-    filter: grayscale(1) contrast(1.02);
     transform: none;
   }
 
