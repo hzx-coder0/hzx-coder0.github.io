@@ -1,0 +1,329 @@
+<title>Zhenxin Huang — Homepage Redesign Prototype</title>
+<style>
+  :root {
+    --paper: #f7f7f5;
+    --surface: #ffffff;
+    --ink: #131311;
+    --body: #26251f;
+    --muted: #565550;
+    --faint: #8b8a83;
+    --hairline: #dad8d0;
+    --hairline-strong: #bab8ae;
+    --wash: #13131112;
+    --shadow: 0 1px 2px #1313110c, 0 8px 24px #1313110f;
+    --shadow-lift: 0 6px 16px #13131116, 0 20px 44px #1313111f;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Cambria, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --maxw: 960px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101012; --surface: #1a1a1d; --ink: #f4f3ee; --body: #dcdbd4; --muted: #a2a199; --faint: #6d6c65;
+      --hairline: #2b2b2f; --hairline-strong: #45454b; --wash: #ffffff14;
+      --shadow: 0 1px 2px #00000038, 0 8px 24px #0000004a; --shadow-lift: 0 6px 16px #0000004a, 0 20px 44px #00000060;
+    }
+  }
+  :root[data-theme="light"] {
+    --paper: #f7f7f5; --surface: #ffffff; --ink: #131311; --body: #26251f; --muted: #565550; --faint: #8b8a83;
+    --hairline: #dad8d0; --hairline-strong: #bab8ae; --wash: #13131112;
+    --shadow: 0 1px 2px #1313110c, 0 8px 24px #1313110f; --shadow-lift: 0 6px 16px #13131116, 0 20px 44px #1313111f;
+  }
+  :root[data-theme="dark"] {
+    --paper: #101012; --surface: #1a1a1d; --ink: #f4f3ee; --body: #dcdbd4; --muted: #a2a199; --faint: #6d6c65;
+    --hairline: #2b2b2f; --hairline-strong: #45454b; --wash: #ffffff14;
+    --shadow: 0 1px 2px #00000038, 0 8px 24px #0000004a; --shadow-lift: 0 6px 16px #0000004a, 0 20px 44px #00000060;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--body); font-family: var(--sans); font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  a { color: var(--ink); text-decoration: none; }
+
+  /* ---------- top bar ---------- */
+  .topbar { position: sticky; top: 0; z-index: 20; padding: 0.75rem 0; background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: saturate(120%) blur(10px); border-bottom: 1px solid var(--hairline); }
+  .topbar-inner { max-width: var(--maxw); margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 clamp(1.2rem, 4vw, 2rem); }
+  .topbar .brand { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); font-weight: 600; }
+  .topnav { display: flex; gap: 1.6rem; }
+  .topnav a { color: var(--muted); font-size: 0.9rem; }
+  .topnav a:hover { color: var(--ink); }
+  .theme-toggle { font-size: 0.82rem; background: transparent; color: var(--muted); border: 1px solid var(--hairline-strong); border-radius: 8px; padding: 0.35rem 0.8rem; cursor: pointer; }
+  .theme-toggle:hover { border-color: var(--ink); color: var(--ink); }
+  @media (max-width: 760px) { .topnav { display: none; } }
+
+  /* ---------- hero: text + circular avatar, ink-wash field behind ---------- */
+  .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--hairline); }
+  #field { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.4; }
+  @media (prefers-color-scheme: dark) { #field { opacity: 0.5; } }
+  .hero-inner { position: relative; max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: clamp(1.5rem, 5vw, 3.2rem); align-items: center;
+    padding: clamp(2.8rem, 7vw, 5rem) clamp(1.2rem, 4vw, 2rem) clamp(2.6rem, 6vw, 4rem); }
+  @media (max-width: 680px) { .hero-inner { grid-template-columns: 1fr; justify-items: start; } }
+  .hero .kicker { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .hero h1 { font-family: var(--serif); font-weight: 600; line-height: 1.04; font-size: clamp(2.8rem, 7vw, 4.4rem); letter-spacing: -0.022em; margin: 0.55rem 0 0.4rem; color: var(--ink); text-wrap: balance; }
+  .hero .role { font-size: 1.1rem; color: var(--muted); margin: 0.5rem 0 1.5rem; max-width: 52ch; }
+  .hero .role b { color: var(--ink); font-weight: 600; }
+  .hero-contacts { display: flex; flex-wrap: wrap; gap: 1.3rem; }
+  .hero-contacts a, .hero-contacts span { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--muted); font-size: 0.94rem; }
+  .hero-contacts a:hover { color: var(--ink); }
+  .hero-contacts svg { width: 17px; height: 17px; flex: none; }
+  .avatar { width: 172px; height: 172px; border-radius: 50%; overflow: hidden; display: grid; place-items: center;
+    background: radial-gradient(140% 140% at 30% 20%, color-mix(in srgb, var(--ink) 5%, var(--surface)), var(--surface));
+    color: var(--faint); box-shadow: 0 0 0 6px var(--paper), 0 0 0 7px var(--hairline-strong), var(--shadow-lift);
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease; }
+  .avatar > svg { transition: transform .45s ease, color .35s ease; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.02); transition: filter .5s ease, transform .55s ease; }
+  .avatar:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 0 0 6px var(--paper), 0 0 0 7px var(--ink), var(--shadow-lift); }
+  .avatar:hover > svg { transform: scale(1.08); color: var(--muted); }
+  .avatar:hover img { filter: grayscale(0) contrast(1); transform: scale(1.06); }
+  @media (max-width: 680px) { .avatar { order: -1; width: 128px; height: 128px; } }
+  @media (prefers-reduced-motion: reduce) { .avatar, .avatar > svg, .avatar img { transition: none; } .avatar:hover { transform: none; } .avatar:hover img { transform: none; } }
+
+  /* ---------- content ---------- */
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: clamp(2.4rem, 5vw, 3.6rem) clamp(1.2rem, 4vw, 2rem) 1rem; }
+  .sec { margin-bottom: clamp(2.8rem, 5.5vw, 3.8rem); }
+  .sec > h2 { font-family: var(--serif); font-weight: 600; font-size: 1.6rem; color: var(--ink); letter-spacing: -0.01em;
+    display: inline-block; margin: 0 0 1.4rem; padding-bottom: 0.34rem; border-bottom: 3px solid var(--ink); }
+
+  /* about */
+  .about p { margin: 0 0 1rem; color: var(--body); max-width: 72ch; }
+  .about p:last-child { margin: 0; }
+  .about b { color: var(--ink); font-weight: 600; }
+  .about .hl { color: var(--ink); font-weight: 600; box-shadow: inset 0 -0.42em 0 var(--wash); }
+
+  /* news */
+  .news { list-style: none; margin: 0; padding: 0; }
+  .news li { display: flex; gap: 1rem; padding: 0.62rem 0; }
+  .news li + li { border-top: 1px solid var(--hairline); }
+  .news .d { flex: none; min-width: 78px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .news .t { color: var(--body); }
+
+  /* publications — borderless editorial list, figure on the right */
+  .pubs { display: flex; flex-direction: column; }
+  .pub { display: grid; grid-template-columns: 30px 1fr 210px; gap: 1.7rem; align-items: start; padding: 1.7rem 0; }
+  .pub + .pub { border-top: 1px solid var(--hairline); }
+  .pub:first-child { padding-top: 0.2rem; }
+  .pub .idx { font-family: var(--serif); font-size: 1.05rem; color: var(--faint); line-height: 1.5; font-variant-numeric: tabular-nums; padding-top: 0.15rem; }
+  .figure { aspect-ratio: 4 / 3; border-radius: 8px; overflow: hidden;
+    background: linear-gradient(150deg, color-mix(in srgb, var(--ink) 4%, var(--surface)), color-mix(in srgb, var(--ink) 11%, var(--surface)));
+    display: grid; place-items: center; color: var(--faint); }
+  .figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .pub:hover .figure img { transform: scale(1.04); }
+  .pub-body { min-width: 0; }
+  .pub .venue { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.45rem; }
+  .pub h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; line-height: 1.34; color: var(--ink); margin: 0 0 0.45rem; text-wrap: pretty; }
+  .pub .authors { font-size: 0.94rem; color: var(--muted); margin: 0 0 0.9rem; }
+  .pub .authors b { color: var(--ink); font-weight: 700; }
+  .pub-links { display: flex; flex-wrap: wrap; gap: 1.15rem; }
+  .pub-links a { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.87rem; font-weight: 600; color: var(--ink); }
+  .pub-links a svg { width: 15px; height: 15px; color: var(--muted); transition: color .15s; }
+  .pub-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .pub-links a:hover svg { color: var(--ink); }
+  @media (max-width: 640px) { .pub { grid-template-columns: 1fr; gap: 1.1rem; } .pub .idx { display: none; } .figure { max-width: 220px; order: 2; } }
+
+  /* honors — single column */
+  .honors { list-style: none; margin: 0; padding: 0; }
+  .honors li { display: flex; gap: 1.1rem; padding: 0.64rem 0; align-items: baseline; }
+  .honors li + li { border-top: 1px solid var(--hairline); }
+  .honors .y { flex: none; min-width: 52px; color: var(--muted); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .honors .w { color: var(--body); }
+
+  /* education */
+  .entries { display: flex; flex-direction: column; gap: 1.5rem; }
+  .entry { display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 1rem; align-items: baseline; }
+  .entry h3 { font-family: var(--serif); font-size: 1.22rem; font-weight: 600; color: var(--ink); margin: 0; grid-column: 1; }
+  .entry .when { grid-column: 2; grid-row: 1; color: var(--muted); font-weight: 600; font-size: 0.92rem; white-space: nowrap; }
+  .entry p { grid-column: 1 / -1; margin: 0.2rem 0 0; color: var(--body); }
+  .entry p b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 520px) { .entry { grid-template-columns: 1fr; } .entry .when { grid-column: 1; grid-row: auto; } }
+
+  /* projects — clickable rows */
+  .projects { display: flex; flex-direction: column; }
+  .proj { display: grid; grid-template-columns: 1fr 26px; gap: 0.2rem 0.8rem; align-items: start; padding: 1.2rem 0.3rem 1.2rem 0; text-decoration: none; transition: padding-left .18s ease; }
+  .proj + .proj { border-top: 1px solid var(--hairline); }
+  .proj:first-child { padding-top: 0.2rem; }
+  .proj h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); margin: 0; grid-column: 1; }
+  .proj p { grid-column: 1; margin: 0.24rem 0 0; color: var(--muted); }
+  .proj .arrow { grid-column: 2; grid-row: 1; color: var(--faint); transition: transform .18s ease, color .18s ease; }
+  .proj:hover { padding-left: 0.5rem; }
+  .proj:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+  .proj:hover .arrow { transform: translate(3px, -3px); color: var(--ink); }
+
+  footer { text-align: center; padding: 2.6rem 1rem; color: var(--faint); font-size: 0.84rem; border-top: 1px solid var(--hairline); }
+
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal, .pub, .proj { opacity: 1; transform: none; transition: none; } }
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Zhenxin Huang</div>
+    <nav class="topnav">
+      <a href="#about">About</a><a href="#news">News</a><a href="#pubs">Publications</a>
+      <a href="#honors">Honors</a><a href="#edu">Education</a><a href="#projects">Projects</a>
+    </nav>
+    <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">Theme</button>
+  </div>
+</div>
+
+<header class="hero">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>Zhenxin Huang</h1>
+      <p class="role">Undergraduate in Artificial Intelligence at <b>USTC</b>, continuing to graduate study in Communication Engineering from 2026. I work on making data generation and transfer learning for <b>nonlinear time-dependent PDEs</b> more efficient.</p>
+      <div class="hero-contacts">
+        <a href="mailto:huangzx@mail.ustc.edu.cn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>huangzx@mail.ustc.edu.cn</a>
+        <a href="https://github.com/hzx-coder0"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.3-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.1 6.8-9.6C22 6.6 17.5 2 12 2Z"/></svg>hzx-coder0</a>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Hefei, China</span>
+      </div>
+    </div>
+    <div class="avatar" role="img" aria-label="Profile photo placeholder">
+      <svg viewBox="0 0 24 24" width="70" height="70" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="9" r="4"/><path d="M4 20.5c0-4.2 3.6-6.5 8-6.5s8 2.3 8 6.5"/></svg>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section id="about" class="sec reveal">
+    <h2>About Me</h2>
+    <div class="about">
+      <p>I am <b>Zhenxin Huang</b>, an undergraduate student in Artificial Intelligence at the University of Science and Technology of China (USTC). I have been admitted to continue graduate study at USTC in Communication Engineering starting in 2026.</p>
+      <p>My research interests include <span class="hl">scientific machine learning</span>, <span class="hl">neural operators</span>, <span class="hl">PDE data generation</span>, and <span class="hl">parameter-efficient adaptation</span>. I am especially interested in methods that make data generation and transfer learning for nonlinear time-dependent PDEs more efficient.</p>
+    </div>
+  </section>
+
+  <section id="news" class="sec reveal">
+    <h2>News</h2>
+    <ul class="news">
+      <li><span class="d">2026.09</span><span class="t">Will continue graduate study at USTC in Communication Engineering.</span></li>
+      <li><span class="d">2026</span><span class="t">Working on pretraining and LoRA-style fine-tuning for neural operators.</span></li>
+      <li><span class="d">2025</span><span class="t">Working on efficient data generation for nonlinear temporal PDEs.</span></li>
+    </ul>
+  </section>
+
+  <section id="pubs" class="sec reveal">
+    <h2>Publications</h2>
+    <div class="pubs">
+      <article class="pub">
+        <div class="idx">1</div>
+        <div class="pub-body">
+          <div class="venue">AAAI 2027 · In preparation</div>
+          <h3>Accelerating Data Generation for Nonlinear Temporal PDEs via Homologous Perturbation in Solution Space</h3>
+          <p class="authors"><b>Zhenxin Huang</b>, et al.</p>
+          <div class="pub-links">
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>PDF</a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m8 8-4 4 4 4M16 8l4 4-4 4"/></svg>Code</a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>Project</a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16M4 5v14l4-2 4 2V5M14 5h6v14h-6"/></svg>BibTeX</a>
+          </div>
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m3 17 5-4 4 3 3-2 6 4"/></svg>
+        </div>
+      </article>
+      <article class="pub">
+        <div class="idx">2</div>
+        <div class="pub-body">
+          <div class="venue">NeurIPS 2026 · In preparation</div>
+          <h3>Pretraining and Fine-tuning for Neural Operators</h3>
+          <p class="authors"><b>Zhenxin Huang</b>, et al.</p>
+          <div class="pub-links">
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>PDF</a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m8 8-4 4 4 4M16 8l4 4-4 4"/></svg>Code</a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>Project</a>
+            <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16M4 5v14l4-2 4 2V5M14 5h6v14h-6"/></svg>BibTeX</a>
+          </div>
+        </div>
+        <div class="figure">
+          <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m3 17 5-4 4 3 3-2 6 4"/></svg>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="honors" class="sec reveal">
+    <h2>Honors &amp; Awards</h2>
+    <ul class="honors">
+      <li><span class="y">2025</span><span class="w">National Encouragement Scholarship</span></li>
+      <li><span class="y">2025</span><span class="w">PetroChina Scholarship</span></li>
+      <li><span class="y">2024</span><span class="w">Institute of Microelectronics Scholarship</span></li>
+      <li><span class="y">2024</span><span class="w">AIGC Innovation Competition — National Excellence Award</span></li>
+      <li><span class="y">2024</span><span class="w">Xinghuo Cup LLM Innovation Competition — Excellence Award</span></li>
+      <li><span class="y">2023</span><span class="w">Chinese College Student Mathematics Competition — Provincial Third Prize</span></li>
+      <li><span class="y">2023</span><span class="w">Yang Yongman Scholarship</span></li>
+      <li><span class="y">2022</span><span class="w">Freshman Scholarship — Bronze Award</span></li>
+    </ul>
+  </section>
+
+  <section id="edu" class="sec reveal">
+    <h2>Education</h2>
+    <div class="entries">
+      <div class="entry">
+        <h3>M.S. in Communication Engineering</h3>
+        <span class="when">2026 onward</span>
+        <p>University of Science and Technology of China. <b>Admitted through graduate recommendation.</b></p>
+      </div>
+      <div class="entry">
+        <h3>B.S. in Artificial Intelligence</h3>
+        <span class="when">2022 – 2026</span>
+        <p>University of Science and Technology of China. <b>GPA 3.74 / 4.30</b>, rank 7 / 57 · CET-6 524 · CET-4 554.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="sec reveal">
+    <h2>Projects</h2>
+    <div class="projects">
+      <a class="proj" href="https://github.com/hzx-coder0" target="_blank" rel="noopener">
+        <h3>Personalized Mobile Agent</h3>
+        <span class="arrow"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <p>An LLM-based mobile agent using CoT, ReAct, ADB screenshots, and XML parsing to infer implicit user intent and execute mobile-device actions.</p>
+      </a>
+      <a class="proj" href="https://github.com/hzx-coder0" target="_blank" rel="noopener">
+        <h3>Emotion-driven Virtual Human Assistant</h3>
+        <span class="arrow"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <p>A pipeline mapping user text into emotion-aware video-generation controls, combining video generation with talking-head synthesis. Undergraduate innovation project: grade A.</p>
+      </a>
+      <a class="proj" href="https://github.com/hzx-coder0" target="_blank" rel="noopener">
+        <h3>Personal Shopping AI Assistant Based on LLMs</h3>
+        <span class="arrow"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <p>An external product database and system prompts for fuzzy-intent recommendation and structured extraction. Awarded in national LLM application competitions.</p>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>© 2026 Zhenxin Huang · Built with Jekyll on GitHub Pages · Prototype</footer>
+
+<script>
+  const root = document.documentElement, btn = document.getElementById('themeBtn');
+  btn.addEventListener('click', () => {
+    const dark = root.getAttribute('data-theme') === 'dark' || (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme', dark ? 'light' : 'dark');
+  });
+  const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ink-wash flow field — grayscale, reads as 水墨
+  const canvas = document.getElementById('field'), ctx = canvas.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W, H, parts = [], raf;
+  function ink() { return getComputedStyle(root).getPropertyValue('--ink').trim() || '#131311'; }
+  function resize() { const r = canvas.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2); canvas.width = r.width * dpr; canvas.height = r.height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); W = r.width; H = r.height; }
+  function field(x, y, t) { return Math.sin(x * .006 + t) + Math.cos(y * .007 - t * .8) + Math.sin((x + y) * .004 + t * .5); }
+  function seed() { parts = []; const n = Math.min(80, Math.round(W / 12)); for (let i = 0; i < n; i++) parts.push({ x: Math.random() * W, y: Math.random() * H, l: 30 + Math.random() * 40 }); }
+  function frame(ts) { const t = ts * .00016; ctx.clearRect(0, 0, W, H); ctx.strokeStyle = ink(); ctx.globalAlpha = .15; ctx.lineWidth = 1;
+    for (const p of parts) { ctx.beginPath(); ctx.moveTo(p.x, p.y); let x = p.x, y = p.y; for (let s = 0; s < p.l; s++) { const a = field(x, y, t) * Math.PI; x += Math.cos(a) * 2; y += Math.sin(a) * 2; ctx.lineTo(x, y); } ctx.stroke();
+      p.x += Math.cos(field(p.x, p.y, t) * Math.PI) * .4; p.y += Math.sin(field(p.x, p.y, t) * Math.PI) * .4;
+      if (p.x < -20 || p.x > W + 20 || p.y < -20 || p.y > H + 20) { p.x = Math.random() * W; p.y = Math.random() * H; } }
+    raf = requestAnimationFrame(frame); }
+  function staticFrame() { ctx.clearRect(0, 0, W, H); ctx.strokeStyle = ink(); ctx.globalAlpha = .13; ctx.lineWidth = 1;
+    for (const p of parts) { ctx.beginPath(); ctx.moveTo(p.x, p.y); let x = p.x, y = p.y; for (let s = 0; s < p.l; s++) { const a = field(x, y, .3) * Math.PI; x += Math.cos(a) * 2; y += Math.sin(a) * 2; ctx.lineTo(x, y); } ctx.stroke(); } }
+  function start() { resize(); seed(); if (reduce) staticFrame(); else { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); } }
+  addEventListener('resize', () => { resize(); seed(); if (reduce) staticFrame(); });
+  start();
+</script>
