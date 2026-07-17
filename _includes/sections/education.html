@@ -1,0 +1,9 @@
+<div class="entries">
+  {% for item in site.data.education %}
+    <div class="entry">
+      <h3>{{ item.title | escape }}</h3>
+      <span class="when">{{ item.when | escape }}</span>
+      {% if item.detail %}<p>{{ item.detail | escape }}</p>{% endif %}
+    </div>
+  {% endfor %}
+</div>

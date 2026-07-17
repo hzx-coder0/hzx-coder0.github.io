@@ -1,0 +1,9 @@
+<div class="projects">
+  {% for item in site.data.projects %}
+    {% if item.url %}<a class="proj" href="{{ item.url | escape }}" target="_blank" rel="noopener">{% else %}<article class="proj">{% endif %}
+      <h3>{{ item.title | escape }}</h3>
+      <p>{{ item.description | escape }}</p>
+      {% if item.url %}<span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>{% endif %}
+    {% if item.url %}</a>{% else %}</article>{% endif %}
+  {% endfor %}
+</div>

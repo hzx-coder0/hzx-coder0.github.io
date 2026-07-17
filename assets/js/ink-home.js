@@ -22,9 +22,11 @@
     const masthead = document.querySelector(".masthead");
     if (!masthead) return;
 
+    const brandName = document.querySelector(".academic-hero [itemprop=name]")?.textContent.trim() || "Zhenxin Huang";
+
     masthead.innerHTML = `
       <div class="topbar-inner">
-        <a class="brand" href="#top">Zhenxin Huang</a>
+        <a class="brand" href="#top"></a>
         <nav class="topnav" aria-label="Homepage sections">
           <a href="#about">About</a>
           <a href="#news">News</a>
@@ -35,6 +37,8 @@
         </nav>
         <button class="theme-toggle" type="button" aria-label="Toggle color theme">Theme</button>
       </div>`;
+
+    masthead.querySelector(".brand").textContent = brandName;
 
     const button = masthead.querySelector(".theme-toggle");
     const syncButton = () => {
@@ -58,7 +62,14 @@
     return text.replace(/[🔥📝🎖📖💬💻]/g, "").trim();
   }
 
+  function prebuilt(nodes, className) {
+    return nodes.find((node) => node.nodeType === Node.ELEMENT_NODE && node.classList.contains(className));
+  }
+
   function datedList(nodes, listClass, dateClass, textClass) {
+    const rendered = prebuilt(nodes, listClass);
+    if (rendered) return rendered;
+
     const source = nodes.find((node) => node.nodeType === Node.ELEMENT_NODE && node.tagName === "UL");
     const list = document.createElement("ul");
     list.className = listClass;
@@ -103,6 +114,9 @@
   }
 
   function buildPublications(nodes) {
+    const rendered = prebuilt(nodes, "pubs");
+    if (rendered) return rendered;
+
     const source = nodes.find((node) => node.nodeType === Node.ELEMENT_NODE && node.tagName === "UL");
     const publications = document.createElement("div");
     publications.className = "pubs";
@@ -149,6 +163,9 @@
   }
 
   function buildEducation(nodes) {
+    const rendered = prebuilt(nodes, "entries");
+    if (rendered) return rendered;
+
     const source = nodes.find((node) => node.nodeType === Node.ELEMENT_NODE && node.tagName === "UL");
     const entries = document.createElement("div");
     entries.className = "entries";
@@ -183,6 +200,9 @@
   }
 
   function buildProjects(nodes) {
+    const rendered = prebuilt(nodes, "projects");
+    if (rendered) return rendered;
+
     const source = nodes.find((node) => node.nodeType === Node.ELEMENT_NODE && node.tagName === "UL");
     const projects = document.createElement("div");
     projects.className = "projects";

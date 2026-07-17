@@ -1,0 +1,8 @@
+- date: "2026.09"
+  text: "Will continue graduate study at USTC in Communication Engineering."
+
+- date: "2026"
+  text: "Working on pretraining and LoRA-style fine-tuning for neural operators."
+
+- date: "2025"
+  text: "Working on efficient data generation for nonlinear temporal PDEs."

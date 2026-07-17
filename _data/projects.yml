@@ -1,0 +1,11 @@
+- title: "Personalized Mobile Agent"
+  url: null
+  description: "Built an LLM-based mobile agent using CoT, ReAct, ADB screenshots, and XML parsing to infer implicit user intent and execute mobile-device actions."
+
+- title: "Emotion-driven Virtual Human Assistant"
+  url: null
+  description: "Developed a virtual assistant pipeline that maps user text into emotion-aware video generation controls and combines video generation with talking-head synthesis. Undergraduate innovation project grade: A."
+
+- title: "Personal Shopping AI Assistant Based on LLMs"
+  url: null
+  description: "Designed an external product database and system prompts for fuzzy intent recommendation and structured extraction. Received awards in national LLM application competitions."
