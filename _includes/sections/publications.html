@@ -22,11 +22,11 @@
           </p>
           {% if publication.links.pdf or publication.links.code or publication.links.project or publication.links.bibtex or publication.links.arxiv %}
             <div class="pub-links" aria-label="Publication links">
-              {% if publication.links.pdf %}<a href="{{ publication.links.pdf | escape }}" target="_blank" rel="noopener">PDF</a>{% endif %}
-              {% if publication.links.arxiv %}<a href="{{ publication.links.arxiv | escape }}" target="_blank" rel="noopener">arXiv</a>{% endif %}
-              {% if publication.links.code %}<a href="{{ publication.links.code | escape }}" target="_blank" rel="noopener">Code</a>{% endif %}
-              {% if publication.links.project %}<a href="{{ publication.links.project | escape }}" target="_blank" rel="noopener">Project</a>{% endif %}
-              {% if publication.links.bibtex %}<a href="{{ publication.links.bibtex | escape }}" target="_blank" rel="noopener">BibTeX</a>{% endif %}
+              {% if publication.links.pdf %}<a href="{{ publication.links.pdf | escape }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>PDF</a>{% endif %}
+              {% if publication.links.arxiv %}<a href="{{ publication.links.arxiv | escape }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5h16M4 5v14l4-2 4 2V5M14 5h6v14h-6"/></svg>arXiv</a>{% endif %}
+              {% if publication.links.code %}<a href="{{ publication.links.code | escape }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4"/></svg>Code</a>{% endif %}
+              {% if publication.links.project %}<a href="{{ publication.links.project | escape }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>Project</a>{% endif %}
+              {% if publication.links.bibtex %}<a href="{{ publication.links.bibtex | escape }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>BibTeX</a>{% endif %}
             </div>
           {% endif %}
         </div>
