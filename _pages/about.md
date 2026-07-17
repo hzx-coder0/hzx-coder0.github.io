@@ -10,9 +10,9 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am **Zhenxin Huang (黄振鑫)**, an undergraduate student in Artificial Intelligence at the University of Science and Technology of China (USTC). I have been admitted to continue graduate study at USTC in Communication Engineering starting in 2026.
+<!-- about:start -->I am **Zhenxin Huang (黄振鑫)**, an undergraduate student in Artificial Intelligence at the University of Science and Technology of China (USTC). I have been admitted to continue graduate study at USTC in Communication Engineering starting in 2026.
 
-My research interests include **scientific machine learning**, **neural operators**, **PDE data generation**, and **parameter-efficient adaptation**. I am especially interested in methods that make data generation and transfer learning for nonlinear time-dependent PDEs more efficient.
+My research interests include **scientific machine learning**, **neural operators**, **PDE data generation**, and **parameter-efficient finetune**. I am especially interested in methods that make data generation and transfer learning for nonlinear time-dependent PDEs more efficient.<!-- about:end -->
 
 # 🔥 News
 - *2026.09*: Will continue graduate study at USTC in Communication Engineering.
