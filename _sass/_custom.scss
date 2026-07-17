@@ -474,6 +474,29 @@ a:visited {
   font-weight: 700;
 }
 
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.page__content .pub-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.page__content .pub-links a:hover,
+.page__content .pub-links a:focus-visible {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .pub .figure {
   display: grid;
   place-items: center;

@@ -1,0 +1,43 @@
+<div class="pubs">
+  {% assign publication_index = 0 %}
+  {% for publication in site.data.publications %}
+    {% unless publication.selected == false %}
+      {% assign publication_index = publication_index | plus: 1 %}
+      <article class="pub">
+        <div class="idx">{{ publication_index }}</div>
+        <div class="pub-body">
+          {% if publication.venue or publication.year or publication.status %}
+            <div class="venue">
+              {% if publication.venue %}{{ publication.venue | escape }}{% endif %}
+              {% if publication.year %}{% if publication.venue %} · {% endif %}{{ publication.year }}{% endif %}
+              {% if publication.status %} · {{ publication.status | escape }}{% endif %}
+            </div>
+          {% endif %}
+          <h3>{{ publication.title | escape }}</h3>
+          <p class="authors">
+            {% assign escaped_authors = publication.authors | escape %}
+            {% assign escaped_owner = site.owner_name | default: site.author.name | escape %}
+            {% capture owner_markup %}<strong>{{ escaped_owner }}</strong>{% endcapture %}
+            {{ escaped_authors | replace: escaped_owner, owner_markup }}
+          </p>
+          {% if publication.links.pdf or publication.links.code or publication.links.project or publication.links.bibtex or publication.links.arxiv %}
+            <div class="pub-links" aria-label="Publication links">
+              {% if publication.links.pdf %}<a href="{{ publication.links.pdf | escape }}" target="_blank" rel="noopener">PDF</a>{% endif %}
+              {% if publication.links.arxiv %}<a href="{{ publication.links.arxiv | escape }}" target="_blank" rel="noopener">arXiv</a>{% endif %}
+              {% if publication.links.code %}<a href="{{ publication.links.code | escape }}" target="_blank" rel="noopener">Code</a>{% endif %}
+              {% if publication.links.project %}<a href="{{ publication.links.project | escape }}" target="_blank" rel="noopener">Project</a>{% endif %}
+              {% if publication.links.bibtex %}<a href="{{ publication.links.bibtex | escape }}" target="_blank" rel="noopener">BibTeX</a>{% endif %}
+            </div>
+          {% endif %}
+        </div>
+        {% if publication.teaser %}
+          <div class="figure"><img src="{{ publication.teaser | relative_url }}" alt="Figure for {{ publication.title | escape }}"></div>
+        {% else %}
+          <div class="figure" aria-label="No publication figure">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m5 17 4-4 3 3 2-2 5 3"/></svg>
+          </div>
+        {% endif %}
+      </article>
+    {% endunless %}
+  {% endfor %}
+</div>

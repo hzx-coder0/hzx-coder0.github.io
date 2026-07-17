@@ -1,0 +1,5 @@
+<ul class="honors">
+  {% for item in site.data.honors %}
+    <li><span class="y">{{ item.year }}</span><span class="w">{{ item.text | escape }}</span></li>
+  {% endfor %}
+</ul>
